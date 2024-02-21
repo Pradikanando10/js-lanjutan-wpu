@@ -2,16 +2,17 @@
 // Arti lainya sebuah function yang di eksekusi setelah fungsi lain selesai di jalankan
 
 // contoh synchronous callbacks
-// function halo(nama) {
-//   alert(`Halo, ${nama}`);
-// }
+function halo(nama) {
+  alert(`Halo, ${nama}`);
+}
 
-// function tampilkanPesan(callback) {
-//   const nama = prompt("Masukan nama: ");
-//   callback(nama);
-// }
+// keterangan function di bawah ini : parameter callback baris 10 adalah function halo(), lalu setelah mengisikan prompt baris 11 akan menjalankan baris 12 (function halo()) dengan mengirimkan parameter nama ke function halo() baris 5 dengan parameter callback baris 10;
+function tampilkanPesan(callback) {
+  const nama = prompt("Masukan nama: ");
+  callback(nama);
+}
 
-// tampilkanPesan(halo);
+tampilkanPesan(halo);
 
 // contoh tidak pakai function
 // tampilkanPesan((nama) => {
@@ -42,22 +43,22 @@
 // mhs.forEach((m) => console.log(m.nama));
 
 // Asyncronous callback
-function getDataMahasiswa(url, success, error) {
-  let xhr = new XMLHttpRequest();
+// function getDataMahasiswa(url, success, error) {
+//   let xhr = new XMLHttpRequest();
 
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        success(xhr.response);
-      } else if (xhr.status === 404) {
-        error();
-      }
-    }
-  };
+//   xhr.onreadystatechange = function () {
+//     if (xhr.readyState === 4) {
+//       if (xhr.status === 200) {
+//         success(xhr.response);
+//       } else if (xhr.status === 404) {
+//         error();
+//       }
+//     }
+//   };
 
-  xhr.open("GET", url);
-  xhr.send();
-}
+//   xhr.open("GET", url);
+//   xhr.send();
+// }
 
 // getDataMahasiswa(
 //   "16.Callback/mahasiswa.json",
@@ -67,12 +68,13 @@ function getDataMahasiswa(url, success, error) {
 //   () => {}
 // );
 
-getDataMahasiswa(
-  "16.Callback/mahasiswa.json",
-  (results) => {
-    console.log(JSON.parse(results));
-  },
-  () => {
-    console.error("Gagal mendapatkan data mahasiswa.");
-  }
-);
+// lainnya
+// getDataMahasiswa(
+//   "16.Callback/mahasiswa.json",
+//   (results) => {
+//     console.log(JSON.parse(results));
+//   },
+//   () => {
+//     console.error("Gagal mendapatkan data mahasiswa.");
+//   }
+// );
